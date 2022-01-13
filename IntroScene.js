@@ -1,6 +1,6 @@
 class IntroScene extends Phaser.Scene {
   constructor() {
-  super({ key: 'introScene' });
+  super({ key: 'IntroScene' });
   }
   
   preload() {
@@ -14,7 +14,7 @@ class IntroScene extends Phaser.Scene {
     this.add.text( 110, 350, 'space bar key to fire', {fontFamily: 'Georgia', fill: '#68f5ff', fontSize: '20px'})
     this.add.text( 100, 380, 'avoid enemies and drops', {fontFamily: 'Georgia', fill: '#ffcf02', fontSize: '20px'})
   this.input.on('pointerdown', () => {
-    this.scene.stop('introScene')
+    this.scene.stop('IntroScene')
     this.scene.start('GameScene')
   })
   
