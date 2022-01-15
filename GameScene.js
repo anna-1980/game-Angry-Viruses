@@ -33,19 +33,7 @@ class GameScene extends Phaser.Scene {
   
   create()
   {
-
-    var style = {
-      'background-color': 'white',
-      'width': '80px',
-      'height': '30px',
-      'font': '20px Arial',
-      'font-weight': 'bold', 
-      'class': 'playerName',
-  }
-    let element = this.add.dom(200, 300, 'input', style, 'Phaser 3');
-    console.log(element);
- 
-      
+   
    gameState.puff = this.sound.add('puff', { loop: false , volume: 0.5});
    gameState.auch = this.sound.add("auch", { loop: false });
  
@@ -61,14 +49,15 @@ class GameScene extends Phaser.Scene {
       this.scene.restart();
     }
     })
-  
+    this.add.text(440, 8, `${gameState.playerName}`, {fontFamily: 'Georgia', fill: '#004f75', fontSize: '20px'}).setOrigin(1, 0)
+
     // Creating static platforms
     const platforms = this.physics.add.staticGroup();
     platforms.create(225, 535, 'platform').setScale(1).refreshBody();
   
     // Displays the initial number of viruses, this value is initially hardcoded as 24 
-    gameState.scoreText = this.add.text(300, 8, `viruses Left: 32`, { fontFamily: 'Georgia', fontSize: '20px', fill: '#000000' });
-    gameState.TotalScore = this.add.text(15, 8,  `${gameState.playerName} Score: 0` , { fontFamily: 'Georgia', fontSize: '20px', fill: '#cf0707' });
+    // gameState.scoreText = this.add.text(300, 8, `viruses Left: 32`, { fontFamily: 'Georgia', fontSize: '20px', fill: '#000000' });
+    gameState.TotalScore = this.add.text(15, 8,  ` Score: 0` , { fontFamily: 'Georgia', fontSize: '20px', fill: '#cf0707' });
     gameState.livesText = this.add.text(10, 475, `Lives: ${gameState.lives}`, { fontFamily: 'Georgia', fontSize: '20px', fill: '#ffee79' });
 
     // Uses the physics plugin to create dude
@@ -249,8 +238,9 @@ let xVal
    virus.destroy();
    antibody.destroy();
    gameState.puff.play(),
+   console.log(gameState);
    gameState.score += 10;
-   gameState.scoreText.setText(`Viruses Left ${numOfTotalEnemies()}`)
+  //  gameState.scoreText.setText(`Viruses Left ${numOfTotalEnemies()}`)
    gameState.TotalScore.setText(`Score: ${gameState.score}`)
     
    
@@ -265,9 +255,8 @@ let xVal
   pellets.destroy();
   gameState.score += 5;
   // console.log(score2);
-  gameState.scoreText.setText(`Viruses Left ${numOfTotalEnemies()}`)
-   gameState.TotalScore.setText(`Score: ${gameState.score}`)
-   
+  // gameState.scoreText.setText(`Viruses Left ${numOfTotalEnemies()}`)
+  gameState.TotalScore.setText(` Score: ${gameState.score}`)
     
   });
   
