@@ -42,8 +42,8 @@ class GameScene extends Phaser.Scene {
       'font-weight': 'bold', 
       'class': 'playerName',
   }
-    // let element = this.add.dom(200, 300, 'input', style, 'Phaser 3');
-     
+    let element = this.add.dom(200, 300, 'input', style, 'Phaser 3');
+    console.log(element);
  
       
    gameState.puff = this.sound.add('puff', { loop: false , volume: 0.5});
