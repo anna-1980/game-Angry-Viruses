@@ -15,6 +15,9 @@ class EndScene extends Phaser.Scene {
       this.input.on('pointerdown', () => {
       this.scene.stop('EndScene')
       this.scene.start('IntroScene')
+      gameState.score = 0;
+      gameState.lives = 3;
+
     })
     
     }
