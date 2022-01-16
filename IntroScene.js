@@ -25,7 +25,7 @@ class IntroScene extends Phaser.Scene {
     let text = this.add.text(210, 50, 'Please enter your name', { fill: '#b5e6fd', fontSize: '20px '}).setOrigin(0.5, 0.5);
     let nameInput = this.add.dom(220, 30).createFromCache('nameform');
     var names = text.eventNames();
-    console.log(names);
+    console.log(nameInput);
 
      
  

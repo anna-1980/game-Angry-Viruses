@@ -39,8 +39,7 @@ const gameState = {
       arcade: {
         gravity: { y: 200 },
         enableBody: true,
-//         debug: true,
-//         debugShowBody: true,
+ 
       }
     },
     scene: [IntroScene, WelcomeScene, GameScene, EndScene]
