@@ -17,7 +17,7 @@ class GameScene extends Phaser.Scene {
     this.load.image('background', './assets2/bacgroundWithPlatform2.png');
     // this.load.image('dude', './avatar01.png');
     this.load.image('virusDrop', './assets2/redTriangle.png');
-    this.load.image('antibody', './assets2//antibody06.png');
+    this.load.image('antibody', './assets2/antibody06.png');
     this.load.spritesheet('dude', 
       './assets2/SpriteDude-04.png',
       { frameWidth: 125, frameHeight: 201 }
@@ -46,7 +46,7 @@ class GameScene extends Phaser.Scene {
     this.input.on('pointerup', () => {
     if (gameState.active === false) {
       console.log('gameState false')
-      this.scene.restart();
+      // this.scene.restart();
     }
     })
     this.add.text(440, 8, `${gameState.playerName}`, {fontFamily: 'Georgia', fill: '#004f75', fontSize: '20px'}).setOrigin(1, 0)
@@ -61,7 +61,7 @@ class GameScene extends Phaser.Scene {
     gameState.livesText = this.add.text(10, 475, `Lives: ${gameState.lives}`, { fontFamily: 'Georgia', fontSize: '20px', fill: '#ffee79' });
 
     // Uses the physics plugin to create dude
-    gameState.player = this.physics.add.sprite(200, 300, 'dude')
+    gameState.player = this.physics.add.sprite(200, 250, 'dude')
     .setGravityY(400)
     .setScale(.3)
     .setSize(90, 130)
@@ -92,7 +92,18 @@ class GameScene extends Phaser.Scene {
        });	
     //   console.log("animEND");
     this.physics.add.collider(gameState.player, platforms);
-     // create bug list var
+    
+    const left = this.add.text( 20, 450, '⬅️', {fontFamily: 'Georgia', fill: '#68f5ff', fontSize: '20px'}).setInteractive();
+    const right = this.add.text( 410, 450, '➡️', {fontFamily: 'Georgia', fill: '#68f5ff', fontSize: '20px'}).setInteractive();
+    
+    left.on('pointerdown', () => {
+      gameState.player.setAccelerationX(-3000);
+      })
+      
+  right.on('pointerdown', () => {
+      gameState.player.setAccelerationX(3000);
+      })
+    // create bug list var
    
      const viruses = ['virus01', 'virus02', 'virus03', 'virus04', 'virus05']; 
    let randomBug1 = viruses[Math.floor(Math.random()*viruses.length)]
@@ -142,8 +153,6 @@ let xVal
   let pellets =
    this.physics.add.group()
   const genPellet = () => {
-    
-    
     let randomBug = 
     Phaser.Utils.Array.GetRandom(
     gameState.enemies.getChildren());
@@ -155,8 +164,6 @@ let xVal
   } catch (e) {
     console.log(e);
     }
-  
-    
   }
   // create an event loop that continously creates bug pellets
   gameState.pelletsLoop = 
@@ -198,7 +205,7 @@ let xVal
      if (gameState.lives === 0)
      {this.physics.pause();
       gameState.pelletsLoop.destroy();
-     const text = this.add.text(210, 150, 'Game Over', { fontFamily: 'Georgia', fontSize: '40px', fill: '#ff0202' }).setOrigin(0.5, 0.5);
+     const text = this.add.text(210, 150, 'Game Over', { fontFamily: 'Georgia', fontSize: '40px', fill: '#cd2220' }).setOrigin(0.5, 0.5);
       
      this.tweens.add({
       targets: text, 
@@ -305,16 +312,26 @@ let xVal
     this.physics.pause();
     
     gameState.enemyVelocity = 1;
-    this.add.text(80, 200, 'All the Viruses are gone\n You are the winner!!!', {
+    this.add.text(100, 200, 'All the Viruses are gone\n You are the winner!!!', {
     fontFamily: 'Georgia',
     fontSize: '20px', 
     fill: '#000000'
     });
-    this.add.text(100, 300, 'Click to start over', {
-    fontFamily: 'Georgia',
-    fontSize: '20px', 
-    fill: '#fcff68'
-    });
+    this.time.addEvent({
+      delay: 3000, 
+        loop: false,
+      callback: () => {
+        this.physics.pause();
+        this.scene.stop('GameScene');
+        this.scene.start('EndScene');
+        
+        }, 
+       })
+    // this.add.text(100, 300, 'Click to start over', {
+    // fontFamily: 'Georgia',
+    // fontSize: '20px', 
+    // fill: '#fcff68'
+    // });
   
   } else if (numOfTotalEnemies() === 16) {
      
