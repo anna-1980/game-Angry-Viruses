@@ -45,7 +45,7 @@ class GameScene extends Phaser.Scene {
     // When gameState.active is false, the game will listen for a pointerup event and restart when the event happens
     this.input.on('pointerup', () => {
     if (gameState.active === false) {
-      console.log('gameState false')
+      // console.log('gameState false')
       // this.scene.restart();
     }
     })
@@ -245,7 +245,7 @@ let xVal
    virus.destroy();
    antibody.destroy();
    gameState.puff.play(),
-   console.log(gameState);
+  //  console.log(gameState);
    gameState.score += 10;
   //  gameState.scoreText.setText(`Viruses Left ${numOfTotalEnemies()}`)
    gameState.TotalScore.setText(`Score: ${gameState.score}`)
@@ -308,7 +308,7 @@ let xVal
     if(numOfTotalEnemies() === 0){
     
     gameState.active = false;
-    console.log(gameState.active)
+    // console.log(gameState.active)
     this.physics.pause();
     
     gameState.enemyVelocity = 1;

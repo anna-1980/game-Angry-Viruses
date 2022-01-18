@@ -1,5 +1,6 @@
 const gameState = {
   enemyVelocity: 0.5,
+  gameName: 'Angry Viruses',
   score: 0,
   lives: 3,
   highScore: localStorage.getItem('bestScore') || 1,
@@ -7,6 +8,17 @@ const gameState = {
   bestScorePlayer: localStorage.getItem('Best-Player') , 
    
 };
+
+const scores = ({playerName}) => {
+  // console.log(`Gel all scores: ${playerName}`);
+}
+// fetch(`http://localhost:5000/api/scores/${gameState.gameName}`)
+
+fetch(`https://wbs-final-game-back.herokuapp.com/api/scores`)
+.then((response) => response.json())
+.then((data) => scores(data))
+.catch((error) => console.log(`That is why: ${error}`));
+
   // Helper Methods below:
   // sortedEnemies() returns an array of enemy sprites sorted by their x coordinate
   function sortedEnemies(){
