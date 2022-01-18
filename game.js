@@ -1,6 +1,6 @@
 const gameState = {
   enemyVelocity: 0.5,
-  gameName: 'Angry Viruses again',
+  gameName: 'Angry Viruses',
   score: 0,
   lives: 3,
   highScore: localStorage.getItem('bestScore') || 1,
