@@ -63,7 +63,7 @@ class GameScene extends Phaser.Scene {
     // Displays the initial number of viruses, this value is initially hardcoded as 24 
     // gameState.scoreText = this.add.text(300, 8, `viruses Left: 32`, { fontFamily: 'Georgia', fontSize: '20px', fill: '#000000' });
     gameState.TotalScore = this.add.text(15, 8,  ` Score: 0` , { fontFamily: 'Georgia', fontSize: '20px', fill: '#cf0707' });
-    gameState.livesText = this.add.text(30, 472, `Lives: ${gameState.lives}`, { fontFamily: 'Georgia', fontSize: '20px', fill: '#ffee79' });
+    gameState.livesText = this.add.text(33, 472, `Lives: ${gameState.lives}`, { fontFamily: 'Arial', fontSize: '20px', fill: '#ffee79' });
 
     // Uses the physics plugin to create dude
     gameState.player = this.physics.add.sprite(200, 250, 'dude')
@@ -113,8 +113,8 @@ const heart = this.add.image(15, 485, 'heart').setOrigin(0.5, 0.5).setScale(0.15
 
 this.tweens.add({
   targets: heart, 
-  scaleX:0.18,
-  scaleY:0.18,
+  scaleX:0.2,
+  scaleY:0.2,
   duration: 400,
   ease: 'Sine.easeInOut',
     
@@ -247,14 +247,16 @@ let xVal
      pelet.destroy();
      gameState.auch.play(),
      player.setTint(0xff0000),
+     player.setScale(0.25),
      this.time.addEvent({
       targets: player,
-        delay: 100, 
+        delay: 200, 
         loop: false,
         scale: 2,
         completeDelay: 500,
       callback: () => {
         player.clearTint();
+        player.setScale(0.3);
     }, 
     })
      gameState.lives -= 1;
