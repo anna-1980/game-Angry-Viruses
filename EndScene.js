@@ -41,7 +41,7 @@ class EndScene extends Phaser.Scene {
     })
 
     console.log('from EndScene');
-    console.log(gameState.game);
+    console.log(gameState.gameName);
     console.log(gameState.score);
     console.log(gameState.highScore);
     console.log(gameState.playerName);
