@@ -51,6 +51,7 @@ const gameState = {
       arcade: {
         gravity: { y: 200 },
         enableBody: true,
+        pixelArt: false,
         // debug: true,
         // debugShowBody: true,
       }
