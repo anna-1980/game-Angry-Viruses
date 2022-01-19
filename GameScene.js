@@ -14,7 +14,9 @@ class GameScene extends Phaser.Scene {
     this.load.image('virus04', './assets2/Virus04.png');
     this.load.image('virus05', './assets2/Virus05.png');
     this.load.image('platform', './assets2/ground02.png');
-    this.load.image('background', './assets2/bacgroundWithPlatform2.png');
+    this.load.image('background', './assets2/backgroundGreen0.png');
+    this.load.image('standOn', './assets2/standingPlatforms.png');
+    this.load.image('vaccine', './assets2/Vaccine-03.png');
     // this.load.image('dude', './avatar01.png');
     this.load.image('virusDrop', './assets2/redTriangle.png');
     this.load.image('antibody', './assets2/antibody06.png');
@@ -42,7 +44,7 @@ class GameScene extends Phaser.Scene {
     // When gameState.active is true, the game is being played and not over. When gameState.active is false, then it's game over
     gameState.active = true;
      
-    this.add.image(225, 250, 'background').setScale(.75);
+    
     // When gameState.active is false, the game will listen for a pointerup event and restart when the event happens
     this.input.on('pointerup', () => {
     if (gameState.active === false) {
@@ -54,12 +56,14 @@ class GameScene extends Phaser.Scene {
 
     // Creating static platforms
     const platforms = this.physics.add.staticGroup();
-    platforms.create(225, 535, 'platform').setScale(1).refreshBody();
-  
+    platforms.create(225, 530, 'platform').setScale(1).refreshBody();
+    this.add.image(225, 250, 'background').setScale(1);
+    this.add.image(225, 500, 'standOn').setScale(1);
+    
     // Displays the initial number of viruses, this value is initially hardcoded as 24 
     // gameState.scoreText = this.add.text(300, 8, `viruses Left: 32`, { fontFamily: 'Georgia', fontSize: '20px', fill: '#000000' });
     gameState.TotalScore = this.add.text(15, 8,  ` Score: 0` , { fontFamily: 'Georgia', fontSize: '20px', fill: '#cf0707' });
-    gameState.livesText = this.add.text(10, 475, `Lives: ${gameState.lives}`, { fontFamily: 'Georgia', fontSize: '20px', fill: '#ffee79' });
+    gameState.livesText = this.add.text(30, 472, `Lives: ${gameState.lives}`, { fontFamily: 'Georgia', fontSize: '20px', fill: '#ffee79' });
 
     // Uses the physics plugin to create dude
     gameState.player = this.physics.add.sprite(200, 250, 'dude')
@@ -67,7 +71,7 @@ class GameScene extends Phaser.Scene {
     .setScale(.3)
     .setSize(90, 130)
     .setOffset(21, 70);
-    gameState.player.setBounce(0.3);
+    gameState.player.setBounce(0.5);
     // Create Collider objects
     gameState.player.setCollideWorldBounds(true);
   
@@ -94,22 +98,71 @@ class GameScene extends Phaser.Scene {
     //   console.log("animEND");
     this.physics.add.collider(gameState.player, platforms);
     
-    const left = this.add.text( 20, 450, '⬅️', {fontFamily: 'Georgia', fill: '#68f5ff', fontSize: '20px'}).setInteractive();
-    const right = this.add.text( 410, 450, '➡️', {fontFamily: 'Georgia', fill: '#68f5ff', fontSize: '20px'}).setInteractive();
+    // const left = this.add.text( 20, 440, '⬅️', {fontFamily: 'Georgia', fill: '#68f5ff', fontSize: '30px'}).setInteractive();
+    // const right = this.add.text( 410, 440, '➡️', {fontFamily: 'Georgia', fill: '#68f5ff', fontSize: '30px'}).setInteractive();
 
-    left.on('pointerdown', () => {
-      gameState.player.setAccelerationX(-3000);
-      })
+  //   left.on('pointerdown', () => {
+  //     gameState.player.setAccelerationX(-3000);
+  //     })
       
-  right.on('pointerdown', () => {
-      gameState.player.setAccelerationX(3000);
-      })
+  // right.on('pointerdown', () => {
+  //     gameState.player.setAccelerationX(3000);
+  //     })
    
-      this.add.image(0, 500, 'heart').setOrigin(0, 1);
-   
+const heart = this.add.image(15, 485, 'heart').setOrigin(0.5, 0.5).setScale(0.15);
+
+this.tweens.add({
+  targets: heart, 
+  scaleX:0.18,
+  scaleY:0.18,
+  duration: 400,
+  ease: 'Sine.easeInOut',
+    
+  yoyo: true,
+  repeat: -1,
+  alpha: {value: 1, duration: 300}, 
+ 
+})
+
+
+
+gameState.catch = this.physics.add.sprite(80, 50, 'vaccine')
+.setOrigin(.5, .5)
+.setScale(0.3)
+.setSize(90, 200)
+.setOffset(25, 240)
+.setBounce(1)
+// .setCircle(50)
+.setVelocity(Phaser.Math.Between(-200, 200), 10);
+gameState.catch.setCollideWorldBounds(true);
+// gameState.catch.allowRotation(true);
+
+this.physics.add.collider(gameState.catch, platforms);
+
+this.physics.add.collider(gameState.catch, gameState.player, () => {
+  console.log(gameState.catch);
+  gameState.catch.destroy();
+  gameState.player.setTint(0x9BFF0B);
+  gameState.player.setScale(0.5);
+  gameState.vaccine = true;
+ 
+  this.time.addEvent({
+   targets: gameState.player,
+     delay: 250, 
+     loop: false,
+     completeDelay: 800,
+   callback: () => {
+    gameState.player.clearTint();
+     gameState.player.setScale(.3);
+ }, 
+ })
+ } );
+
+
+
       // create bug list var
    
-     const viruses = ['virus01', 'virus02', 'virus03', 'virus04', 'virus05']; 
+   const viruses = ['virus01', 'virus02', 'virus03', 'virus04', 'virus05']; 
    let randomBug1 = viruses[Math.floor(Math.random()*viruses.length)]
    let randomBug2 = viruses[Math.floor(Math.random()*viruses.length)]
    let randomBug3 = viruses[Math.floor(Math.random()*viruses.length)]
@@ -159,7 +212,7 @@ let xVal
   const genPellet = () => {
     let randomBug = 
     Phaser.Utils.Array.GetRandom(
-    gameState.enemies.getChildren());
+    gameState.enemies.getChildren()) || 0;
     
     try{
      pellets.create(randomBug.x, 
@@ -198,7 +251,7 @@ let xVal
       targets: player,
         delay: 100, 
         loop: false,
-        scaley: 2,
+        scale: 2,
         completeDelay: 500,
       callback: () => {
         player.clearTint();
@@ -287,7 +340,7 @@ let xVal
     }
   
     // Execute code if the spacebar key is pressed
-    if (Phaser.Input.Keyboard.JustDown(gameState.cursors.space)) {
+    if (Phaser.Input.Keyboard.JustDown(gameState.cursors.space) && gameState.vaccine === true) {
       gameState.antibody.create(gameState.player.x, gameState.player.y, 'antibody').setGravityY(-600).setScale(.25)
       //  console.log('sound') 
       gameState.blaster.play();

@@ -27,7 +27,7 @@ class EndScene extends Phaser.Scene {
           this.scene.start('IntroScene')
         })
 
-        this.add.text( 70, 360, 'Click START to try gain or Go back !', {fontFamily: 'Georgia', fill: '#fffb22', fontSize: '20px'})
+        this.add.text( 70, 360, 'Click START to try gain or Go back !', {fontFamily: 'Georgia', fill: '#FFE600', fontSize: '20px'})
         this.add.text( 110, 190, `${gameState.playerName}`, {fontFamily: 'Georgia', fill: '#fffb22', fontSize: '30px'})
         this.add.text( 100, 240, ` your Score is : ${gameState.score}`, {fontFamily: 'Georgia', fill: '#fffb22', fontSize: '30px'})
         
@@ -46,6 +46,7 @@ class EndScene extends Phaser.Scene {
       // this.scene.start('IntroScene')
       gameState.score = 0;
       gameState.lives = 3;
+      gameState.vaccine = false;
 
     })
 

@@ -5,8 +5,8 @@ const gameState = {
   lives: 3,
   highScore: localStorage.getItem('bestScore') || 1,
   playerName: localStorage.getItem('Player-Name') || "Anna",  
-  bestScorePlayer: localStorage.getItem('Best-Player') , 
-   
+  bestScorePlayer: localStorage.getItem('Best-Player'), 
+  vaccine: false,
 };
 
 // const scores = ({playerName}) => {
@@ -62,10 +62,10 @@ const game = new Phaser.Game(config);
 
 const playerName = document.querySelector(".playerName");
 
-playerName.addEventListener("keyup", (e) => {
-  if (e.key === "Enter") {
-    console.log('new player enter');
-    addPlayer();
-  }
-});
+// playerName.addEventListener("keyup", (e) => {
+//   if (e.key === "Enter") {
+//     console.log('new player enter');
+//     addPlayer();
+//   }
+// });
 

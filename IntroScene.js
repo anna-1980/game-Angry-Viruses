@@ -5,7 +5,7 @@ class IntroScene extends Phaser.Scene {
   
   preload() {
     this.load.html('nameform', './nameform.html');
-	this.load.image('firstScreen', './assets2/BackGround-15.png');
+	this.load.image('firstScreen', './assets2/backgroundGreen0.png');
 	this.load.image('heart', './assets2/heart03.png');
 
 
@@ -14,24 +14,13 @@ class IntroScene extends Phaser.Scene {
   create() {
  
     this.add.image(0, 0, 'firstScreen').setOrigin(0, 0);
-	const heart = this.add.image(20, 480, 'heart').setOrigin(0.5, 0.5).setScale(0.1);
 
-	this.tweens.add({
-        targets: heart, 
-        scaleX:0.2,
-        scaleY:0.2,
-        duration: 400,
-        ease: 'Sine.easeInOut',
-         
-        yoyo: true,
-        repeat: -1,
-        alpha: {value: 1, duration: 300}, 
-      })
 
 
 
     //add player name form
-    let text = this.add.text(210, 50, 'Please enter your name', { fill: '#b5e6fd', fontSize: '20px '}).setOrigin(0.5, 0.5);
+    let text = this.add.text(210, 50, 'Please enter your name', { fill: '#385129', fontSize: '20px '}).setOrigin(0.5, 0.5);
+    this.add.text(210, 150, '..and press enter', { fill: '#385129', fontSize: '20px '}).setOrigin(0.5, 0.5);
     let nameInput = this.add.dom(220, 30).createFromCache('nameform');
     var names = text.eventNames();
     // console.log(nameInput);

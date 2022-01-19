@@ -5,20 +5,22 @@ class WelcomeScene extends Phaser.Scene {
     
     preload() {
      this.load.image('avatar', './assets2/avatarSmile.png');
-     this.load.image('firstScreen', './assets2/BackGround-15.png');
+     this.load.image('firstScreen', './assets2/backgroundGreen0.png');
     }
     
     create() {
         this.add.image(0, 0, 'firstScreen').setOrigin(0, 0);
+                let welcomeText = this.add.text(210, 50, `Welcome ${gameState.playerName}`, { fill: '#385129', fontSize: '30px '}).setOrigin(0.5, 0.5);
         // this.add.rectangle(0, 0, 500, 5000, 0x124282).setOrigin(0, 0);
-        gameState.avatar = this.physics.add.image(210, 200, 'avatar').setScale(.4).setInteractive();
+        gameState.avatar = this.physics.add.image(210, 200, 'avatar').setScale(.5).setInteractive();
         this.add.text( 100, 240, 'Click me to start!', {fontFamily: 'Georgia', fill: '#fffb22', fontSize: '30px'});
-        this.add.text( 120, 285, '⬅️ key to move left', {fontFamily: 'Georgia', fill: '#68f5ff', fontSize: '20px'});
-        this.add.text( 120, 320, '➡️ key to move right', {fontFamily: 'Georgia', fill: '#68f5ff', fontSize: '20px'});
-        this.add.text( 120, 350, 'space bar key to fire', {fontFamily: 'Georgia', fill: '#68f5ff', fontSize: '20px'});
-        this.add.text( 100, 380, 'avoid enemies and drops', {fontFamily: 'Georgia', fill: '#ffcf02', fontSize: '20px'});
-        const left = this.add.text( 20, 400, '⬅️', {fontFamily: 'Georgia', fill: '#68f5ff', fontSize: '20px'}).setInteractive();
-        const right = this.add.text( 400, 400, '➡️', {fontFamily: 'Georgia', fill: '#68f5ff', fontSize: '20px'}).setInteractive();
+        this.add.text( 133, 285, '  key to move left', {fontFamily: 'Georgia', fill: '#385129', fontSize: '20px'});
+        this.add.text( 133, 320, '  key to move right', {fontFamily: 'Georgia', fill: '#385129', fontSize: '20px'});
+        this.add.text( 120, 353, 'space bar key to fire', {fontFamily: 'Georgia', fill: '#385129', fontSize: '20px'});
+        this.add.text( 100, 388, 'avoid enemies and drops', {fontFamily: 'Georgia', fill: '#D14A0F', fontSize: '20px'});
+        this.add.text( 50, 408, 'catch a VACCINE to shoot Antibodies at the Viruses', {fontFamily: 'Georgia', fill: '#D14A0F', fontSize: '22px'});
+        const left = this.add.text( 115, 288, '⬅️', {fontFamily: 'Georgia', fill: '#68f5ff', fontSize: '20px'}).setInteractive();
+        const right = this.add.text( 115, 322, '➡️', {fontFamily: 'Georgia', fill: '#68f5ff', fontSize: '20px'}).setInteractive();
         gameState.avatar.setGravityY(-200);
         gameState.avatar.setCollideWorldBounds(true);
 
@@ -36,7 +38,7 @@ class WelcomeScene extends Phaser.Scene {
         this.scene.start('GameScene')
         })
 
-        let welcomeText = this.add.text(210, 50, `Welcome ${gameState.playerName}`, { fill: '#b5e6fd', fontSize: '30px '}).setOrigin(0.5, 0.5);
+
     
     }
     
