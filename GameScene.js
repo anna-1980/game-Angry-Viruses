@@ -18,6 +18,7 @@ class GameScene extends Phaser.Scene {
     // this.load.image('dude', './avatar01.png');
     this.load.image('virusDrop', './assets2/redTriangle.png');
     this.load.image('antibody', './assets2/antibody06.png');
+    this.load.image('heart', './assets2/heart03.png');
     this.load.spritesheet('dude', 
       './assets2/SpriteDude-04.png',
       { frameWidth: 125, frameHeight: 201 }
@@ -95,7 +96,7 @@ class GameScene extends Phaser.Scene {
     
     const left = this.add.text( 20, 450, '⬅️', {fontFamily: 'Georgia', fill: '#68f5ff', fontSize: '20px'}).setInteractive();
     const right = this.add.text( 410, 450, '➡️', {fontFamily: 'Georgia', fill: '#68f5ff', fontSize: '20px'}).setInteractive();
-    
+
     left.on('pointerdown', () => {
       gameState.player.setAccelerationX(-3000);
       })
@@ -103,7 +104,10 @@ class GameScene extends Phaser.Scene {
   right.on('pointerdown', () => {
       gameState.player.setAccelerationX(3000);
       })
-    // create bug list var
+   
+      this.add.image(0, 500, 'heart').setOrigin(0, 1);
+   
+      // create bug list var
    
      const viruses = ['virus01', 'virus02', 'virus03', 'virus04', 'virus05']; 
    let randomBug1 = viruses[Math.floor(Math.random()*viruses.length)]
@@ -205,25 +209,10 @@ let xVal
      if (gameState.lives === 0)
      {this.physics.pause();
       gameState.pelletsLoop.destroy();
-     const text = this.add.text(210, 150, 'Game Over', { fontFamily: 'Georgia', fontSize: '40px', fill: '#cd2220' }).setOrigin(0.5, 0.5);
-      
-     this.tweens.add({
-      targets: text, 
-      scaleX: 2,
-      scaleY: 2,
-      delay: 0,
-      duration: 550,
-      ease: 'Sine.easeInOut',
-      velocityY: -550,
-      angle: 10,
-      yoyo: true,
-      repeat: 1,
-      alpha: {value: 0.5, duration: 300}, 
-    }) 
-    
+
       gameState.puff.play(),
      this.time.addEvent({
-       delay: 1500, 
+       delay: 2000, 
          loop: false,
        callback: () => {
          this.physics.pause();
@@ -312,11 +301,7 @@ let xVal
     this.physics.pause();
     
     gameState.enemyVelocity = 1;
-    this.add.text(100, 200, 'All the Viruses are gone\n You are the winner!!!', {
-    fontFamily: 'Georgia',
-    fontSize: '20px', 
-    fill: '#000000'
-    });
+    
     this.time.addEvent({
       delay: 3000, 
         loop: false,
@@ -326,13 +311,28 @@ let xVal
         this.scene.start('EndScene');
         
         }, 
-       })
-    // this.add.text(100, 300, 'Click to start over', {
-    // fontFamily: 'Georgia',
-    // fontSize: '20px', 
-    // fill: '#fcff68'
-    // });
+       });
+       const text = this.add.text(210, 150, 'Great Job', { fontFamily: 'Georgia', fontSize: '30px', fill: '#cd2220' }).setOrigin(0.5, 0.5);
+
+     
+       this.tweens.add({
+        targets: text, 
+        scaleX: 2,
+        scaleY: 2,
+        delay: 0,
+        duration: 550,
+        ease: 'Sine.easeInOut',
+        velocityY: -550,
+        angle: -8,
+        yoyo: true,
+        // repeat: 2,
+        alpha: {value: 0.5, duration: 300}, 
+        onComplete: function(){
+           
+           }
+      }) 
   
+    
   } else if (numOfTotalEnemies() === 16) {
      
     gameState.enemyVelocity = 3;
@@ -362,15 +362,7 @@ let xVal
       }) 
     
     
-    
-      // gameState.enemies.setGravity = 200;
-    // if(gameState.leftMostVirus.x < 10 || gameState.rightMostVirus.x > 440) {
-    // 	gameState.enemyVelocity *= -1;
-    // 	gameState.enemies.getChildren().forEach(
-    // 	  virus => {
-    // 	  virus.y +=18;
-    // 	  });
-    // 	}
+ 
     
 
     }else {

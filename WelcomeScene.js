@@ -4,12 +4,13 @@ class WelcomeScene extends Phaser.Scene {
     }
     
     preload() {
-     this.load.image('avatar', './assets2/avatar01.png');
-
+     this.load.image('avatar', './assets2/avatarSmile.png');
+     this.load.image('firstScreen', './assets2/BackGround-15.png');
     }
     
     create() {
-        this.add.rectangle(0, 0, 500, 5000, 0x124282).setOrigin(0, 0);
+        this.add.image(0, 0, 'firstScreen').setOrigin(0, 0);
+        // this.add.rectangle(0, 0, 500, 5000, 0x124282).setOrigin(0, 0);
         gameState.avatar = this.physics.add.image(210, 200, 'avatar').setScale(.4).setInteractive();
         this.add.text( 100, 240, 'Click me to start!', {fontFamily: 'Georgia', fill: '#fffb22', fontSize: '30px'});
         this.add.text( 120, 285, '⬅️ key to move left', {fontFamily: 'Georgia', fill: '#68f5ff', fontSize: '20px'});

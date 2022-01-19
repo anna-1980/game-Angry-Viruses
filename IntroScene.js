@@ -5,22 +5,31 @@ class IntroScene extends Phaser.Scene {
   
   preload() {
     this.load.html('nameform', './nameform.html');
-  }
+	this.load.image('firstScreen', './assets2/BackGround-15.png');
+	this.load.image('heart', './assets2/heart03.png');
+
+
+}
   
   create() {
-  //   this.add.image(225, 200, 'avatar').setScale(.4).setInteractive();
-  //   this.add.text( 110, 240, 'Click to start!', {fontFamily: 'Georgia', fill: '#fffb22', fontSize: '30px'})
-  //   this.add.text( 110, 285, '⬅️ key to move left', {fontFamily: 'Georgia', fill: '#68f5ff', fontSize: '20px'})
-  //   this.add.text( 110, 320, '➡️ key to move right', {fontFamily: 'Georgia', fill: '#68f5ff', fontSize: '20px'})
-  //   this.add.text( 110, 350, 'space bar key to fire', {fontFamily: 'Georgia', fill: '#68f5ff', fontSize: '20px'})
-  //   this.add.text( 100, 380, 'avoid enemies and drops', {fontFamily: 'Georgia', fill: '#ffcf02', fontSize: '20px'})
-  //  console.log(`input ${gameState}`)
-    // this.input.on('pointerdown', () => {
-    //   this.scene.stop('IntroScene')
-    //   this.scene.start('GameScene')
-    // })
-    // console.log(this.scene);
-    
+ 
+    this.add.image(0, 0, 'firstScreen').setOrigin(0, 0);
+	const heart = this.add.image(20, 480, 'heart').setOrigin(0.5, 0.5).setScale(0.1);
+
+	this.tweens.add({
+        targets: heart, 
+        scaleX:0.2,
+        scaleY:0.2,
+        duration: 400,
+        ease: 'Sine.easeInOut',
+         
+        yoyo: true,
+        repeat: -1,
+        alpha: {value: 1, duration: 300}, 
+      })
+
+
+
     //add player name form
     let text = this.add.text(210, 50, 'Please enter your name', { fill: '#b5e6fd', fontSize: '20px '}).setOrigin(0.5, 0.5);
     let nameInput = this.add.dom(220, 30).createFromCache('nameform');
