@@ -4,7 +4,7 @@ class IntroScene extends Phaser.Scene {
   }
   
   preload() {
-    this.load.html('nameform', './nameform.html');
+    this.load.html('nameform', './assets2/nameform.html');
 	this.load.image('firstScreen', './assets2/backgroundGreen0.png');
 	this.load.image('heart', './assets2/heart03.png');
 
