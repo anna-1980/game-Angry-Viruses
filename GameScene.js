@@ -98,16 +98,7 @@ class GameScene extends Phaser.Scene {
     //   console.log("animEND");
     this.physics.add.collider(gameState.player, platforms);
     
-    // const left = this.add.text( 20, 440, '⬅️', {fontFamily: 'Georgia', fill: '#68f5ff', fontSize: '30px'}).setInteractive();
-    // const right = this.add.text( 410, 440, '➡️', {fontFamily: 'Georgia', fill: '#68f5ff', fontSize: '30px'}).setInteractive();
 
-  //   left.on('pointerdown', () => {
-  //     gameState.player.setAccelerationX(-3000);
-  //     })
-      
-  // right.on('pointerdown', () => {
-  //     gameState.player.setAccelerationX(3000);
-  //     })
    
 const heart = this.add.image(15, 485, 'heart').setOrigin(0.5, 0.5).setScale(0.15);
 
@@ -163,11 +154,11 @@ this.physics.add.collider(gameState.catch, gameState.player, () => {
       // create bug list var
    
    const viruses = ['virus01', 'virus02', 'virus03', 'virus04', 'virus05']; 
-   let randomBug1 = viruses[Math.floor(Math.random()*viruses.length)]
-   let randomBug2 = viruses[Math.floor(Math.random()*viruses.length)]
-   let randomBug3 = viruses[Math.floor(Math.random()*viruses.length)]
-   let randomBug4 = viruses[Math.floor(Math.random()*viruses.length)]
-  //  console.log(randomBug)
+   let randomVir1 = viruses[Math.floor(Math.random()*viruses.length)]
+   let randomVir2 = viruses[Math.floor(Math.random()*viruses.length)]
+   let randomVir3 = viruses[Math.floor(Math.random()*viruses.length)]
+   let randomVir4 = viruses[Math.floor(Math.random()*viruses.length)]
+  //  console.log(randomVir)
    
     
     // Creates cursor objects to be used in update()
@@ -182,24 +173,24 @@ let xVal
     for (xVal = 1; xVal < 9 ; xVal++){
     gameState.enemies.create(
     50 * xVal, 
-    50 * yVal,  `${randomBug1}` ,
+    50 * yVal,  `${randomVir1}` ,
      
-     //`${'randomBug'}` 
+     //`${'randomVir'}` 
     ).setScale(.15).setGravityY(-200);
     gameState.enemies.create(
     50 * xVal, 
-    100 * yVal,  `${randomBug2}`,
+    100 * yVal,  `${randomVir2}`,
       
     ).setScale(.15).setGravityY(-200);
     
     gameState.enemies.create(
     50 * xVal, 
-    150 * yVal, `${randomBug3}` 
+    150 * yVal, `${randomVir3}` 
     ).setScale(.15).setGravityY(-200);
 
     gameState.enemies.create(
       50 * xVal, 
-      200 * yVal, `${randomBug4}` 
+      200 * yVal, `${randomVir4}` 
       ).setScale(.15).setGravityY(-200);
   //    console.log(gameState.enemies.children);
     }
@@ -210,19 +201,19 @@ let xVal
   let pellets =
    this.physics.add.group()
   const genPellet = () => {
-    let randomBug = 
+    let randomVir = 
     Phaser.Utils.Array.GetRandom(
     gameState.enemies.getChildren()) || 0;
     
     try{
-     pellets.create(randomBug.x, 
-    randomBug.y, 'virusDrop').setScale(.2)
-    // console.log(randomBug)
+     pellets.create(randomVir.x, 
+    randomVir.y, 'virusDrop').setScale(.2)
+    // console.log(randomVir)
   } catch (e) {
     console.log(e);
     }
   }
-  // create an event loop that continously creates bug pellets
+  // create an event loop that continously creates Vir pellets
   gameState.pelletsLoop = 
   this.time.addEvent({
     delay: 300, 
@@ -234,7 +225,26 @@ let xVal
   this.physics.add.collider(pellets, platforms, function(pellet) 
    { pellet.destroy();
    });
-  
+
+   this.physics.add.collider(gameState.enemies, platforms, function(virus, platform) 
+   {  
+    //  console.log(virus);
+     virus.destroy();
+    //  this.physics.pause();
+
+    // this.add.text(80, 250, 'Game Over', {fontFamily: 'Georgia', fontSize: '20px', fill: '#e31c60'});
+    // this.time.addEvent({
+    //   delay: 2000, 
+    //     loop: false,
+    //   callback: () => {
+    //     this.physics.pause();
+    //     this.scene.stop('GameScene');
+    //     this.scene.start('EndScene');
+        
+    //     }, 
+    //    })
+
+   });
     
   
    //collider between dude  and the pellets, callback will set the condition to the GAME OVER
@@ -321,6 +331,18 @@ let xVal
   
   update()  
   {
+
+  //   const left = this.add.text( 20, 440, '⬅️', {fontFamily: 'Georgia', fill: '#68f5ff', fontSize: '30px'}).setInteractive();
+  //   const right = this.add.text( 410, 440, '➡️', {fontFamily: 'Georgia', fill: '#68f5ff', fontSize: '30px'}).setInteractive();
+  
+  //   left.on('pointerdown', () => {
+  //     gameState.player.setAccelerationX(-3000);
+  //     })
+      
+  // right.on('pointerdown', () => {
+  //     gameState.player.setAccelerationX(3000);
+  //     })
+
     if (gameState.active) {
     // If the game is active, then players can control dude
     if (gameState.cursors.left.isDown) {
