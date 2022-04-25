@@ -29,6 +29,7 @@ class GameScene extends Phaser.Scene {
     this.load.audio('squish', ['./assets2/squish06a.mp3'])
     this.load.audio('puff', ['./assets2/puff01.mp3'])
     this.load.audio('auch', ['./assets2/aua02.mp3'])
+    this.load.audio('gotit', ['./assets2/cought.mp3'])
 
   }
   
@@ -39,6 +40,7 @@ class GameScene extends Phaser.Scene {
    
    gameState.puff = this.sound.add('puff', { loop: false , volume: 0.5});
    gameState.auch = this.sound.add("auch", { loop: false });
+   gameState.gotit = this.sound.add("gotit", { loop: false });
  
 
     // When gameState.active is true, the game is being played and not over. When gameState.active is false, then it's game over
@@ -136,6 +138,7 @@ this.physics.add.collider(gameState.catch, gameState.player, () => {
   gameState.player.setTint(0x9BFF0B);
   gameState.player.setScale(0.5);
   gameState.vaccine = true;
+  gameState.gotit.play(),
  
   this.time.addEvent({
    targets: gameState.player,
