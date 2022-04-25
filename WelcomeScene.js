@@ -10,18 +10,31 @@ class WelcomeScene extends Phaser.Scene {
     
     create() {
         this.add.image(0, 0, 'firstScreen').setOrigin(0, 0);
-                let welcomeText = this.add.text(210, 50, `Welcome ${gameState.playerName}`, { fill: '#385129', fontSize: '30px '}).setOrigin(0.5, 0.5);
+                let welcomeText = this.add.text(195, 50, `Welcome ${gameState.playerName}`, { fill: '#385129', fontSize: '30px '}).setOrigin(0.5, 0.5);
         // this.add.rectangle(0, 0, 500, 5000, 0x124282).setOrigin(0, 0);
-        gameState.avatar = this.physics.add.image(210, 180, 'avatar').setScale(.5).setInteractive();
-        this.add.text( 100, 215, 'Click me to start!', {fontFamily: 'Georgia', fill: '#fffb22', fontSize: '30px'});
-        this.add.text( 133, 255, '  key to move left', {fontFamily: 'Georgia', fill: '#385129', fontSize: '20px'});
-        this.add.text( 133, 290, '  key to move right', {fontFamily: 'Georgia', fill: '#385129', fontSize: '20px'});
-        this.add.text( 120, 323, 'space bar key to fire', {fontFamily: 'Georgia', fill: '#385129', fontSize: '20px'});
-        this.add.text( 100, 358, 'avoid enemies and drops', {fontFamily: 'Georgia', fill: '#fffb22', fontSize: '20px'});
-        this.add.text( 40, 423, ' to shoot Antibodies at the Viruses', {fontFamily: 'Georgia', fill: '#fffb22', fontSize: '22px'});
-        this.add.text( 110, 390, 'catch a VACCINE !!!   ', {fontFamily: 'Georgia', fill: '#fffb22', fontSize: '22px'});
-        const left = this.add.text( 115, 258, '⬅️', {fontFamily: 'Georgia', fill: '#68f5ff', fontSize: '20px'}).setInteractive();
-        const right = this.add.text( 115, 292, '➡️', {fontFamily: 'Georgia', fill: '#68f5ff', fontSize: '20px'}).setInteractive();
+
+ 
+
+      //game controls
+        this.add.text( 85, 220, 'Game controls:', {fontFamily: 'Georgia', fill: '#dfff87', fontSize: '22px'});
+        this.add.text( 85, 250, '← left arrow key to move left', {fontFamily: 'Georgia', fill: '#385129', fontSize: '18px'});
+        // const left = this.add.text( 115, 258, '⬅️', {fontFamily: 'Georgia', fill: '#68f5ff', fontSize: '18px'}).setInteractive();
+        this.add.text( 85, 275, '→ right arrow key to move right', {fontFamily: 'Georgia', fill: '#385129', fontSize: '18px'});
+        // const right = this.add.text( 115, 292, '➡️', {fontFamily: 'Georgia', fill: '#68f5ff', fontSize: '18px'}).setInteractive();
+        this.add.text( 85, 300, ' _ space bar key to fire', {fontFamily: 'Georgia', fill: '#385129', fontSize: '18px'});
+       
+       
+       //how to play
+        this.add.text( 85, 95, 'How to play:', {fontFamily: 'Georgia', fill: '  #dfff87  ', fontSize: '22px'});
+        this.add.text( 85, 125, ' - avoid enemies and drops', {fontFamily: 'Georgia', fill: '#385129', fontSize: '18px'});
+        this.add.text( 85, 150, ' - catch a Vaccine to shoot Antibodies', {fontFamily: 'Georgia', fill: '#385129', fontSize: '18px'});
+        this.add.text( 85, 175, ' - shoot Viruses with Antibodies', {fontFamily: 'Georgia', fill: '#385129', fontSize: '18px'});
+       //how to play
+
+        //start the game  
+        gameState.avatar = this.physics.add.image(210, 390, 'avatar').setScale(.5).setInteractive();
+        this.add.text( 100, 420, 'Click me to start!', {fontFamily: 'Georgia', fill: '#fffb22', fontSize: '30px'});
+        //start the game 
         gameState.avatar.setGravityY(-200);
         gameState.avatar.setCollideWorldBounds(true);
 
