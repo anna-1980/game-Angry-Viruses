@@ -21,7 +21,7 @@ class WelcomeScene extends Phaser.Scene {
         // const left = this.add.text( 115, 258, '⬅️', {fontFamily: 'Georgia', fill: '#68f5ff', fontSize: '18px'}).setInteractive();
         this.add.text( 85, 275, '→ right arrow key to move right', {fontFamily: 'Georgia', fill: '#385129', fontSize: '18px'});
         // const right = this.add.text( 115, 292, '➡️', {fontFamily: 'Georgia', fill: '#68f5ff', fontSize: '18px'}).setInteractive();
-        this.add.text( 85, 300, ' _ space bar key to fire', {fontFamily: 'Georgia', fill: '#385129', fontSize: '18px'});
+        this.add.text( 85, 300, ' _ press space bar key to fire', {fontFamily: 'Georgia', fill: '#385129', fontSize: '18px'});
        
        
        //how to play
