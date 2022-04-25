@@ -38,14 +38,14 @@ class WelcomeScene extends Phaser.Scene {
         gameState.avatar.setGravityY(-200);
         gameState.avatar.setCollideWorldBounds(true);
 
-        left.on('pointerdown', () => {
-            gameState.avatar.setTint(0xff0000);
-            gameState.avatar.setVelocityX(-160);
-            })
+        // left.on('pointerdown', () => {
+        //     gameState.avatar.setTint(0xff0000);
+        //     gameState.avatar.setVelocityX(-160);
+        //     })
             
-        right.on('pointerdown', () => {
-            gameState.avatar.setVelocityX(160);
-            })
+        // right.on('pointerdown', () => {
+        //     gameState.avatar.setVelocityX(160);
+        //     })
                 
         gameState.avatar.on('pointerdown', () => {
         this.scene.stop('IntroScene')
