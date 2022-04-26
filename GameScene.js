@@ -303,7 +303,7 @@ let xVal
    antibody.destroy();
    gameState.puff.play(),
   //  console.log(gameState);
-   gameState.score += 15;
+   gameState.score += 25;
   //  gameState.scoreText.setText(`Viruses Left ${numOfTotalEnemies()}`)
    gameState.TotalScore.setText(`Score: ${gameState.score}`)
     
@@ -317,7 +317,7 @@ let xVal
    
   antibody.destroy();
   pellets.destroy();
-  gameState.score += 10;
+  gameState.score += 15;
   // console.log(score2);
   // gameState.scoreText.setText(`Viruses Left ${numOfTotalEnemies()}`)
   gameState.TotalScore.setText(` Score: ${gameState.score}`)

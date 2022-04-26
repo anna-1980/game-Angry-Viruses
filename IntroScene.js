@@ -21,8 +21,8 @@ class IntroScene extends Phaser.Scene {
     let nameInput = this.add.dom(220, 30).createFromCache('nameform');
     var names = text.eventNames();
     // console.log(nameInput);
-		this.add.rectangle(50, 195, 350, 148, '#000000', 0.5).setOrigin(0, 0);
-		this.add.text(210, 220, `Leader board:`, { fill: '#fffb22', fontSize: '22px '}).setOrigin(0.5, 0.5);
+		this.add.rectangle(50, 200, 350, 148, '#000000', 0.5).setOrigin(0, 0);
+		this.add.text(215, 220, `Leader board:`, { fill: '#fffb22', fontSize: '22px '}).setOrigin(0.5, 0.5);
      
  
 
@@ -105,17 +105,17 @@ let scores = fetch(`https://wbs-final-game-back.herokuapp.com/api/scores/Angry V
 	console.log(gameState.bestScorePlayer1);
 	console.log(gameState.bestScorePlayer1Name);
 
-	this.add.text(220, 250, `${gameState.bestScorePlayer1Name} `, { fill: '#fcff95', fontSize: '20px '}).setOrigin(1, 0.5);
-  this.add.text(240, 250, `${gameState.bestScorePlayer1}`, { fill: '#fcff95', fontSize: '20px '}).setOrigin(0, 0.5);
-  this.add.text(310, 250, `points`, { fill: '#fcff95', fontSize: '20px '}).setOrigin(0, 0.5);
+	this.add.text(220, 255, `${gameState.bestScorePlayer1Name} `, { fill: '#fcff95', fontSize: '20px '}).setOrigin(1, 0.5);
+  this.add.text(240, 255, `${gameState.bestScorePlayer1}`, { fill: '#fcff95', fontSize: '20px '}).setOrigin(0, 0.5);
+  this.add.text(310, 255, `points`, { fill: '#fcff95', fontSize: '20px '}).setOrigin(0, 0.5);
 
-	this.add.text(220, 280, `${gameState.bestScorePlayer2Name} `, { fill: '#fcff95', fontSize: '20px '}).setOrigin(1, 0.5);
-  this.add.text(240, 280, `${gameState.bestScorePlayer2}`, { fill: '#fcff95', fontSize: '20px '}).setOrigin(0, 0.5);
-  this.add.text(310, 280, `points`, { fill: '#fcff95', fontSize: '20px '}).setOrigin(0, 0.5);
+	this.add.text(220, 285, `${gameState.bestScorePlayer2Name} `, { fill: '#fcff95', fontSize: '20px '}).setOrigin(1, 0.5);
+  this.add.text(240, 285, `${gameState.bestScorePlayer2}`, { fill: '#fcff95', fontSize: '20px '}).setOrigin(0, 0.5);
+  this.add.text(310, 285, `points`, { fill: '#fcff95', fontSize: '20px '}).setOrigin(0, 0.5);
 
-	this.add.text(220, 310, `${gameState.bestScorePlayer3Name} `, { fill: '#fcff95', fontSize: '20px '}).setOrigin(1, 0.5);
-  this.add.text(240, 310, `${gameState.bestScorePlayer3}`, { fill: '#fcff95', fontSize: '20px '}).setOrigin(0, 0.5);
-  this.add.text(310, 310, `points`, { fill: '#fcff95', fontSize: '20px '}).setOrigin(0, 0.5);
+	this.add.text(220, 315, `${gameState.bestScorePlayer3Name} `, { fill: '#fcff95', fontSize: '20px '}).setOrigin(1, 0.5);
+  this.add.text(240, 315, `${gameState.bestScorePlayer3}`, { fill: '#fcff95', fontSize: '20px '}).setOrigin(0, 0.5);
+  this.add.text(310, 315, `points`, { fill: '#fcff95', fontSize: '20px '}).setOrigin(0, 0.5);
  
   })
 // .then(data => console.log(data))
