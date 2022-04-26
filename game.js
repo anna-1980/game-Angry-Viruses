@@ -7,6 +7,7 @@ const gameState = {
   playerName: localStorage.getItem('Player-Name') || "Anna",  
   bestScorePlayer: localStorage.getItem('Best-Player'), 
   vaccine: false,
+  bestScore: ,
 };
 
 // const scores = ({playerName}) => {

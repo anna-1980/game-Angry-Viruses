@@ -89,9 +89,51 @@ class IntroScene extends Phaser.Scene {
 			duration: 3000,
 			ease: 'Power3'
 		});
+
+let highScores =  0
+let scores = fetch(`https://wbs-final-game-back.herokuapp.com/api/scores/Angry Viruses`)
+.then((response) => response.json())
+.then(scores => {
+	console.log(scores)
+	console.log('more stuff to log')
   
-  }
+})
+// .then(data => console.log(data))
+// console.log(`from fetch request ${scores}`)
+.catch((error) => console.log(`That is why: ${error}`));
+console.log(highScores)
+ 
+ 
+// fetch(`http://localhost:5000/api/scores/${gameState.gameName}`)
+
+const api_url = 
+      "https://wbs-final-game-back.herokuapp.com/api/scores/Angry Viruses";
+
+// async function getScores(url){
+// 	const response = await fetch(url);
+// 	let data = await response.json();
+// 	// console.log(data);
+// 	highScores.push = data
+// 	}
+   
+// 	getScores(api_url);
+//   const winners = highScores.length;
+	console.log(highScores);
+	console.log(highScores[0]);
   
+// const promiseFromFetch = fetch('https://wbs-final-game-back.herokuapp.com/api/scores/Angry Viruses');
+// console.log(promiseFromFetch);
+
+// const promiseFromJSON = promiseFromFetch.then(
+//   response => response.json(),
+//   error => console.log(error)
+// );
+// console.log(promiseFromJSON);
+// promiseFromJSON.then(posts => console.log(posts)).catch(error => console.log(error));	
+
+
+	}
+ 
   update() {
     // if (gameState.playerName !== '' ) {
     //   this.add.text(210, 50, `Welcome ${gameState.playerName}` , { fill: '#b5e6fd', fontSize: '20px '}).setOrigin(0.5, 0.5);
