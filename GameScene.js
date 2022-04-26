@@ -156,7 +156,7 @@ this.physics.add.collider(gameState.catch, gameState.player, () => {
   this.time.addEvent({
     delay: 300,
     callback: ()=>{
-      if(gameState.vaccine === true && gameState.gameWidth < 413)
+      if(gameState.vaccine === true && gameState.gameWidth < 450)
       {
        
       gameState.antibody.create(gameState.player.x, gameState.player.y, 'antibody').setGravityY(-600).setScale(.25)
@@ -164,7 +164,7 @@ this.physics.add.collider(gameState.catch, gameState.player, () => {
       gameState.blaster.play();
 
     } else{
-      if (gameState.gameWidth < 413){
+      if (gameState.gameWidth < 450){
         left.setVisible(true);
           right.setVisible(true);
       }
@@ -341,8 +341,8 @@ let xVal
 
   console.log(gameState.gameWidth)
  
-  const left = this.add.text( 20, 440, '⬅️', {fontFamily: 'Georgia', fill: '#68f5ff', fontSize: '30px'}).setInteractive();
-  const right = this.add.text( 410, 440, '➡️', {fontFamily: 'Georgia', fill: '#68f5ff', fontSize: '30px'}).setInteractive();
+  const left = this.add.text( 20, 435, '⬅️', {fontFamily: 'Georgia', fill: '#68f5ff', fontSize: '40px'}).setInteractive();
+  const right = this.add.text( 410, 435, '➡️', {fontFamily: 'Georgia', fill: '#68f5ff', fontSize: '40px'}).setInteractive();
   
   left.on('pointerdown', () => {
     gameState.player.setAccelerationX(-8000);
