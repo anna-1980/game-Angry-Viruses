@@ -5,9 +5,10 @@ const gameState = {
   lives: 3,
   highScore: localStorage.getItem('bestScore') || 1,
   playerName: localStorage.getItem('Player-Name') || "Anna",  
-  bestScorePlayer: localStorage.getItem('Best-Player'), 
+  bestScorePlayer1: '', 
+  bestScorePlayer1name: '', 
   vaccine: false,
-  bestScore: ,
+   
 };
 
 // const scores = ({playerName}) => {

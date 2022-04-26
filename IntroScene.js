@@ -15,16 +15,14 @@ class IntroScene extends Phaser.Scene {
  
     this.add.image(0, 0, 'firstScreen').setOrigin(0, 0);
 
-
-
-
     //add player name form
     let text = this.add.text(210, 50, 'Please enter your name', { fill: '#385129', fontSize: '20px '}).setOrigin(0.5, 0.5);
     this.add.text(210, 150, '..and press enter', { fill: '#385129', fontSize: '20px '}).setOrigin(0.5, 0.5);
     let nameInput = this.add.dom(220, 30).createFromCache('nameform');
     var names = text.eventNames();
     // console.log(nameInput);
-
+		this.add.rectangle(50, 195, 350, 148, '#000000', 0.5).setOrigin(0, 0);
+		this.add.text(210, 220, `Leader board:`, { fill: '#fffb22', fontSize: '22px '}).setOrigin(0.5, 0.5);
      
  
 
@@ -90,20 +88,43 @@ class IntroScene extends Phaser.Scene {
 			ease: 'Power3'
 		});
 
-let highScores =  0
+
 let scores = fetch(`https://wbs-final-game-back.herokuapp.com/api/scores/Angry Viruses`)
 .then((response) => response.json())
 .then(scores => {
 	console.log(scores)
-	console.log('more stuff to log')
-  
-})
+	// let player1 = `${(scores[0].playerName)}  ${(scores[0].score)}`;
+	// console.log(player1)
+	gameState.bestScorePlayer1 = (scores[0].score);
+	gameState.bestScorePlayer1Name = (scores[0].playerName);
+	gameState.bestScorePlayer2 = (scores[1].score);
+	gameState.bestScorePlayer2Name = (scores[1].playerName);
+	gameState.bestScorePlayer3 = (scores[2].score);
+	gameState.bestScorePlayer3Name = (scores[2].playerName);
+  console.log('more stuff to log')
+	console.log(gameState.bestScorePlayer1);
+	console.log(gameState.bestScorePlayer1Name);
+
+	this.add.text(220, 250, `${gameState.bestScorePlayer1Name} `, { fill: '#fcff95', fontSize: '20px '}).setOrigin(1, 0.5);
+  this.add.text(240, 250, `${gameState.bestScorePlayer1}`, { fill: '#fcff95', fontSize: '20px '}).setOrigin(0, 0.5);
+  this.add.text(310, 250, `points`, { fill: '#fcff95', fontSize: '20px '}).setOrigin(0, 0.5);
+
+	this.add.text(220, 280, `${gameState.bestScorePlayer2Name} `, { fill: '#fcff95', fontSize: '20px '}).setOrigin(1, 0.5);
+  this.add.text(240, 280, `${gameState.bestScorePlayer2}`, { fill: '#fcff95', fontSize: '20px '}).setOrigin(0, 0.5);
+  this.add.text(310, 280, `points`, { fill: '#fcff95', fontSize: '20px '}).setOrigin(0, 0.5);
+
+	this.add.text(220, 310, `${gameState.bestScorePlayer3Name} `, { fill: '#fcff95', fontSize: '20px '}).setOrigin(1, 0.5);
+  this.add.text(240, 310, `${gameState.bestScorePlayer3}`, { fill: '#fcff95', fontSize: '20px '}).setOrigin(0, 0.5);
+  this.add.text(310, 310, `points`, { fill: '#fcff95', fontSize: '20px '}).setOrigin(0, 0.5);
+ 
+  })
 // .then(data => console.log(data))
 // console.log(`from fetch request ${scores}`)
 .catch((error) => console.log(`That is why: ${error}`));
-console.log(highScores)
- 
- 
+
+
+console.log(gameState.bestScorePlayer1);
+console.log('sfter fetch and checking GameState');
 // fetch(`http://localhost:5000/api/scores/${gameState.gameName}`)
 
 const api_url = 
@@ -118,8 +139,8 @@ const api_url =
    
 // 	getScores(api_url);
 //   const winners = highScores.length;
-	console.log(highScores);
-	console.log(highScores[0]);
+	// console.log(highScores);
+	// console.log(highScores[0]);
   
 // const promiseFromFetch = fetch('https://wbs-final-game-back.herokuapp.com/api/scores/Angry Viruses');
 // console.log(promiseFromFetch);
