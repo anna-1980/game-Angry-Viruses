@@ -167,9 +167,6 @@ this.physics.add.collider(gameState.catch, gameState.player, () => {
       if (gameState.gameWidth < 413){
         left.setVisible(true);
           right.setVisible(true);
-      } else {
-      left.setVisible(false);
-          right.setVisible(false);
       }
     }
   },
