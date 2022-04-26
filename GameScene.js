@@ -342,7 +342,7 @@ let xVal
   console.log(gameState.gameWidth)
  
   const left = this.add.text( 20, 435, '⬅️', {fontFamily: 'Georgia', fill: '#68f5ff', fontSize: '40px'}).setInteractive();
-  const right = this.add.text( 410, 435, '➡️', {fontFamily: 'Georgia', fill: '#68f5ff', fontSize: '40px'}).setInteractive();
+  const right = this.add.text( 400, 435, '➡️', {fontFamily: 'Georgia', fill: '#68f5ff', fontSize: '40px'}).setInteractive();
   
   left.on('pointerdown', () => {
     gameState.player.setAccelerationX(-8000);
