@@ -105,15 +105,15 @@ let scores = fetch(`https://wbs-final-game-back.herokuapp.com/api/scores/Angry V
 	console.log(gameState.bestScorePlayer1);
 	console.log(gameState.bestScorePlayer1Name);
 
-	this.add.text(220, 255, `${gameState.bestScorePlayer1Name} `, { fill: '#fcff95', fontSize: '20px '}).setOrigin(1, 0.5);
+	this.add.text(70, 255, `${gameState.bestScorePlayer1Name} `, { fill: '#fcff95', fontSize: '20px '}).setOrigin(0, 0.5);
   this.add.text(240, 255, `${gameState.bestScorePlayer1}`, { fill: '#fcff95', fontSize: '20px '}).setOrigin(0, 0.5);
   this.add.text(310, 255, `points`, { fill: '#fcff95', fontSize: '20px '}).setOrigin(0, 0.5);
 
-	this.add.text(220, 285, `${gameState.bestScorePlayer2Name} `, { fill: '#fcff95', fontSize: '20px '}).setOrigin(1, 0.5);
+	this.add.text(70, 285, `${gameState.bestScorePlayer2Name} `, { fill: '#fcff95', fontSize: '20px '}).setOrigin(0, 0.5);
   this.add.text(240, 285, `${gameState.bestScorePlayer2}`, { fill: '#fcff95', fontSize: '20px '}).setOrigin(0, 0.5);
   this.add.text(310, 285, `points`, { fill: '#fcff95', fontSize: '20px '}).setOrigin(0, 0.5);
 
-	this.add.text(220, 315, `${gameState.bestScorePlayer3Name} `, { fill: '#fcff95', fontSize: '20px '}).setOrigin(1, 0.5);
+	this.add.text(70, 315, `${gameState.bestScorePlayer3Name} `, { fill: '#fcff95', fontSize: '20px '}).setOrigin(0, 0.5);
   this.add.text(240, 315, `${gameState.bestScorePlayer3}`, { fill: '#fcff95', fontSize: '20px '}).setOrigin(0, 0.5);
   this.add.text(310, 315, `points`, { fill: '#fcff95', fontSize: '20px '}).setOrigin(0, 0.5);
  
