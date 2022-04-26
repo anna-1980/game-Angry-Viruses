@@ -152,6 +152,31 @@ this.physics.add.collider(gameState.catch, gameState.player, () => {
  })
  } );
 
+//reacting to game screen width
+  this.time.addEvent({
+    delay: 300,
+    callback: ()=>{
+      if(gameState.vaccine === true && gameState.gameWidth < 413)
+      {
+       
+      gameState.antibody.create(gameState.player.x, gameState.player.y, 'antibody').setGravityY(-600).setScale(.25)
+      //  console.log('sound') 
+      gameState.blaster.play();
+
+    } else{
+      if (gameState.gameWidth < 413){
+        left.setVisible(true);
+          right.setVisible(true);
+      } else {
+      left.setVisible(false);
+          right.setVisible(false);
+      }
+    }
+  },
+    loop: true
+})
+
+
 
 
       // create bug list var
@@ -234,18 +259,7 @@ let xVal
     //  console.log(virus);
      virus.destroy();
     //  this.physics.pause();
-
-    // this.add.text(80, 250, 'Game Over', {fontFamily: 'Georgia', fontSize: '20px', fill: '#e31c60'});
-    // this.time.addEvent({
-    //   delay: 2000, 
-    //     loop: false,
-    //   callback: () => {
-    //     this.physics.pause();
-    //     this.scene.stop('GameScene');
-    //     this.scene.start('EndScene');
-        
-    //     }, 
-    //    })
+ 
 
    });
     
@@ -327,35 +341,40 @@ let xVal
   gameState.blaster = this.sound.add("blaster", { loop: false });
   gameState.squish = this.sound.add("squish", { loop: false });
   
+
+  console.log(gameState.gameWidth)
  
+  const left = this.add.text( 20, 440, '⬅️', {fontFamily: 'Georgia', fill: '#68f5ff', fontSize: '30px'}).setInteractive();
+  const right = this.add.text( 410, 440, '➡️', {fontFamily: 'Georgia', fill: '#68f5ff', fontSize: '30px'}).setInteractive();
   
-   
+  left.on('pointerdown', () => {
+    gameState.player.setAccelerationX(-8000);
+    
+    })
+    
+  right.on('pointerdown', () => {
+    gameState.player.setAccelerationX(8000);
+     
+    })
   }
   
   update()  
   {
 
-  //   const left = this.add.text( 20, 440, '⬅️', {fontFamily: 'Georgia', fill: '#68f5ff', fontSize: '30px'}).setInteractive();
-  //   const right = this.add.text( 410, 440, '➡️', {fontFamily: 'Georgia', fill: '#68f5ff', fontSize: '30px'}).setInteractive();
-  
-  //   left.on('pointerdown', () => {
-  //     gameState.player.setAccelerationX(-3000);
-  //     })
-      
-  // right.on('pointerdown', () => {
-  //     gameState.player.setAccelerationX(3000);
-  //     })
+
 
     if (gameState.active) {
     // If the game is active, then players can control dude
     if (gameState.cursors.left.isDown) {
       gameState.player.setVelocityX(-160);
       gameState.player.anims.play('left', true);
+      gameState.player.setAccelerationX(0);
     
    
     } else if (gameState.cursors.right.isDown) {
       gameState.player.setVelocityX(160);
       gameState.player.anims.play('right', true);
+      gameState.player.setAccelerationX(0);
      
  
    
@@ -464,6 +483,10 @@ let xVal
     
     }
   }
-  } 
 
+  gameState.gameWidth = parseInt(`${this.scale.canvas.style.width}`, 10);
+ 
+  
+
+  } 
   }

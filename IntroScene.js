@@ -130,6 +130,9 @@ console.log('sfter fetch and checking GameState');
 const api_url = 
       "https://wbs-final-game-back.herokuapp.com/api/scores/Angry Viruses";
 
+
+
+
 // async function getScores(url){
 // 	const response = await fetch(url);
 // 	let data = await response.json();
@@ -152,10 +155,27 @@ const api_url =
 // console.log(promiseFromJSON);
 // promiseFromJSON.then(posts => console.log(posts)).catch(error => console.log(error));	
 
+  //  console.log(this.scale.canvas.style.width)
+	
+ 
+	
+
 
 	}
  
   update() {
+		gameState.gameWidth = parseInt(`${this.scale.canvas.style.width}`, 10);
+		
+
+		//chacking for game width
+		// if (gameState.gameWidth > 361 ){
+		// 	gameState.coverUp.setVisible(false);
+		//  }else{
+		// 	gameState.coverUp.setVisible(true);
+		//  }
+
+
+
     // if (gameState.playerName !== '' ) {
     //   this.add.text(210, 50, `Welcome ${gameState.playerName}` , { fill: '#b5e6fd', fontSize: '20px '}).setOrigin(0.5, 0.5);
     //   console.log(gameState.playerName);
