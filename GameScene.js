@@ -360,12 +360,23 @@ const right = this.add.image(420, 448, 'right')
     gameState.player.setAccelerationX(-8000);
     
     })
+  left.on('pointerup', () => {
+    gameState.player.setAccelerationX(0);
+    
+    })
     
   right.on('pointerdown', () => {
     gameState.player.setAccelerationX(8000);
      
     })
+
+    right.on('pointerup', () => {
+      gameState.player.setAccelerationX(0);
+      
+      })
+
   }
+  
   
   update()  
   {
