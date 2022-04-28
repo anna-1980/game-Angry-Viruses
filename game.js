@@ -42,7 +42,7 @@ const gameState = {
       width: 450,
       height: 500,
       mode: Phaser.Scale.FIT,
-      // autoCenter: Phaser.Scale.CENTER_BOTH,
+      autoCenter: Phaser.Scale.CENTER_BOTH,
     },
     dom: {
       createContainer: true
@@ -54,8 +54,8 @@ const gameState = {
         gravity: { y: 200 },
         enableBody: true,
         pixelArt: false,
-        debug: true,
-        debugShowBody: true,
+        // debug: true,
+        // debugShowBody: true,
       }
     },
     scene: [IntroScene, WelcomeScene, GameScene, EndScene]

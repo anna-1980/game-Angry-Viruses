@@ -21,6 +21,9 @@ class GameScene extends Phaser.Scene {
     this.load.image('virusDrop', './assets2/redTriangle.png');
     this.load.image('antibody', './assets2/antibody06.png');
     this.load.image('heart', './assets2/heart03.png');
+    this.load.image('left', './assets2/left01.png');
+    this.load.image('right', './assets2/right01.png');
+
     this.load.spritesheet('dude', 
       './assets2/SpriteDude-04.png',
       { frameWidth: 125, frameHeight: 201 }
@@ -341,9 +344,19 @@ let xVal
 
   console.log(gameState.gameWidth)
  
-  const left = this.add.text( 20, 440, '⬅️', {fontFamily: 'Georgia', fill: '#68f5ff', fontSize: '30px'}).setInteractive();
-  const right = this.add.text( 410, 440, '➡️', {fontFamily: 'Georgia', fill: '#68f5ff', fontSize: '30px'}).setInteractive();
+  // const left = this.add.text( 20, 440, '⬅️', {fontFamily: 'Georgia', fill: '#68f5ff', fontSize: '30px'}).setInteractive();
+  // const right = this.add.text( 410, 440, '➡️', {fontFamily: 'Georgia', fill: '#68f5ff', fontSize: '30px'}).setInteractive();
   
+const left = this.add.image(30, 448, 'left')
+.setOrigin(0.5, 0.5)
+.setScale(0.25)
+.setInteractive();
+const right = this.add.image(420, 448, 'right')
+.setOrigin(0.5, 0.5)
+.setScale(0.25)
+.setInteractive();
+ 
+
   left.on('pointerdown', () => {
     gameState.player.setAccelerationX(-8000);
     
